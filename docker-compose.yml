@@ -1,0 +1,27 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    environment:
+      POSTGRES_USER: username
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: database_name
+    ports:
+      - "5433:5432"  # Mengubah pengikatan port host ke 5433
+    volumes:
+      - db_data:/var/lib/postgresql/data
+
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile.python
+    depends_on:
+      - db
+    environment:
+      - DATABASE_URL=postgresql://postgres:123@db:1111/haduh
+    volumes:
+      - .:/app
+
+volumes:
+  db_data:

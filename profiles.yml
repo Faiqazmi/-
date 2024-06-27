@@ -1,0 +1,12 @@
+warehouse_project:
+  outputs:
+    dev:
+      type: postgres
+      host: localhost
+      user: postgres
+      pass: '123'
+      port: 1111
+      dbname: haduh
+      schema: public
+      threads: 1
+  target: dev

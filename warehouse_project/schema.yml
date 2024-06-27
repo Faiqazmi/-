@@ -1,0 +1,154 @@
+version: 2
+
+sources:
+  - name: stg_categories
+  - name: stg_customers
+  - name: stg_employee_territories
+  - name: stg_employees
+  - name: stg_order_details
+  - name: stg_orders
+  - name: stg_products
+  - name: stg_regions
+  - name: stg_shippers
+  - name: stg_suppliers
+  - name: stg_territories
+
+models:
+  - name: stg_categories
+    description: "Dimensi kategori produk"
+    tests:
+      - not_null:
+          - category_id
+          - categoryName
+          - description
+          - picture
+  
+  - name: stg_customers
+    description: "Dimensi pelanggan"
+    tests:
+      - not_null: 
+          - customer_id
+          - companyName
+          - contactName
+          - contacTitle
+          - address
+          - city
+          - region
+          - postalCode
+          - country
+          - phone
+          - fax
+  
+  - name: stg_employee_territories
+    description: "Dimensi area karyawan"
+    tests:
+      - not_null: 
+          - employee_id
+          - territory_id
+  
+  - name: stg_employees
+    description: "Dimensi karyawan"
+    tests:
+      - not_null: 
+          - employee_id
+          - lastName
+          - firstName
+          - title
+          - titleOfCourtesy
+          - birthDate
+          - hireDate
+          - address
+          - city
+          - region
+          - postalCode
+          - country
+          - homePhone
+          - extension
+          - photo
+          - notes
+          - reportsTo
+          - photoPath
+  
+  - name: stg_products
+    description: "Dimensi produk"
+    tests:
+      - not_null: 
+          - productID
+          - productName
+          - supplier_id
+          - category_id
+          - quantityPerUnit
+          - unitPrice
+          - unitsInStock
+          - unitsOnOrder
+          - reorderLevel
+          - discontinued
+      
+  - name: stg_regions
+    description: "Dimensi wilayah"
+    tests:
+      - not_null: 
+          - region_id
+          - regionDescription
+  
+  - name: stg_shippers
+    description: "Dimensi pengirim"
+    tests:
+      - not_null: 
+          - shipper_id
+          - companyName
+          - phone
+      
+  - name: stg_suppliers
+    description: "Dimensi pemasok"
+    tests:
+      - not_null: 
+      - supplier_id
+      - companyName
+      - contactName
+      - contactTitle
+      - address
+      - city
+      - region
+      - postalCode
+      - country
+      - phone
+      - fax
+      - homePage
+  
+  - name: stg_territories
+    description: "Dimensi wilayah"
+    tests:
+      - not_null: 
+          - territory_id
+          - territoryDescription
+          - region_id
+
+  - name: stg_order_details
+    description: "Fakta detail pesanan"
+    test:
+      - not_null: 
+          - order_id
+          - product_id
+          - unitPrice
+          - quantity
+          - discount
+
+  - name: stg_orders
+    description: "Fakta pesanan"
+    tests:
+      - not_null: 
+          - order_id
+          - customer_id
+          - employee_id
+          - orderDate
+          - requiredDate
+          - shippedDate
+          - shipVia
+          - freight
+          - shipName
+          - shipAddress
+          - shipCity
+          - shipRegion
+          - shipPostalcode
+          - shipCountry
